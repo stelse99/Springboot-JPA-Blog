@@ -13,7 +13,8 @@ public class HttpControllerTest {
 	
 	private static final String TAG="HttpControllerTest:";
 	
-	@GetMapping("http/lombok")
+	// http://localhost:8000/blog/http/get (select)
+	@GetMapping("/http/lombok")
 	public String lombokTest() {
 		// build pattern 은 순서와 상관 없다.
 		Member m = Member.builder().username("suchang").email("suchang@naver.com").password("1234").build();
