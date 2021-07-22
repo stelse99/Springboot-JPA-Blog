@@ -1,8 +1,12 @@
 package com.scp.blog.test;
 
-import java.util.function.Supplier;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +21,37 @@ public class DummyControllerTest {
 
 	@Autowired
 	private UserRepository userRepository;
-
+	
+	// http://localhost:8000/blog/dummy/users
+	@GetMapping("/dumy/users")
+	public List<User> list(){
+		return userRepository.findAll();
+	}
+	
+	// 한페이지당 2건 Page 데이타를 리턴받아 List 로 변환 해 볼것이다.
+	// http://localhost:8000/blog/dummy/user?page=0
+	@GetMapping("/dummy/user")
+	public List<User> pageList(@PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+		Page<User> pagingUser = userRepository.findAll(pageable);
+		
+		if(pagingUser.isLast()) {
+			
+		}
+		
+		List<User> users = pagingUser.getContent();
+		return users;
+	}
+	
+	
+	// 한페이지당 2건 List 데이타를 바로 리턴받 아볼것이다.
+	// http://localhost:8000/blog/dummy/user?page=0
+//	@GetMapping("/dummy/user")
+//	public List<User> pageList(@PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
+//		List<User> users = userRepository.findAll(pageable).getContent();
+//		
+//		return users;
+//	}
+	
 	// {id} 주소로 파라메터를 전달받을수 있다.
 	// http://localhost:8000/blog/dummy/user/3
 	@GetMapping("/dummy/user/{id}")
