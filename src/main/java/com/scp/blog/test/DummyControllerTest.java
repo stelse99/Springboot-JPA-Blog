@@ -2,14 +2,20 @@ package com.scp.blog.test;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.scp.blog.model.RoleType;
@@ -22,11 +28,81 @@ public class DummyControllerTest {
 	@Autowired
 	private UserRepository userRepository;
 	
+	
+	
+	
+	// http://localhost:8000/blog/dummy/user/1
+	@DeleteMapping("/dummy/user/{id}")
+	public String userDelete(@PathVariable int id) {
+		
+		try {
+			userRepository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			return "삭제 실패 하였습니다. 해당 id 는 DB 에 없습니다.";
+		}
+		
+		return "삭제 되었습니다.";
+	}
+	
+	
+	// http://localhost:8000/blog/dummy/user/1
+	// save 함수는 id 를 전달하지 않으면 insert 한다.
+	// save 함수는 id 가 있으면 update 를 하고 없으면 insert 를 한다. 
+//	@PutMapping("/dummy/user/{id}")
+//	public User updateUser(
+//			@PathVariable int id, 
+//			// JSON 데이타를 요청=> Java Object
+//			// (Message Converter 의 Jackson Lib가 자동변환해서 받아준다.)
+//			@RequestBody User requestUser 
+//	) {
+//		System.out.println("id:"+id);
+//		System.out.println("email:"+requestUser.getEmail());
+//		System.out.println("password:"+requestUser.getPassword());
+//		
+//		User user = userRepository.findById(id).orElseThrow(()->{
+//			return new IllegalArgumentException("수정에실패 하였습니다.");
+//		});
+//		user.setPassword(requestUser.getPassword());
+//		user.setEmail(requestUser.getEmail());
+//		
+//		userRepository.save(user);
+//		
+//		return null;
+//		
+//	}
+
+	// http://localhost:8000/blog/dummy/user/1
+	@Transactional // 함수종료시에 자동 commit 된다.
+	@PutMapping("/dummy/user/{id}")
+	public User updateUser(
+			@PathVariable int id, 
+			// JSON 데이타를 요청=> Java Object
+			// (Message Converter 의 Jackson Lib가 자동변환해서 받아준다.)
+			@RequestBody User requestUser 
+	) {
+		System.out.println("id:"+id);
+		System.out.println("email:"+requestUser.getEmail());
+		System.out.println("password:"+requestUser.getPassword());
+		
+		User user = userRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("수정에실패 하였습니다.");
+		});
+		user.setPassword(requestUser.getPassword());
+		user.setEmail(requestUser.getEmail());
+		
+		// userRepository.save(user);
+		// 더티 체킹 : 영속화가 변경이 일어 났는지 체킹 하는것.
+		return user;
+		
+	}
+	
+	
 	// http://localhost:8000/blog/dummy/users
-	@GetMapping("/dumy/users")
+	@GetMapping("/dummy/users")
 	public List<User> list(){
 		return userRepository.findAll();
 	}
+	
 	
 	// 한페이지당 2건 Page 데이타를 리턴받아 List 로 변환 해 볼것이다.
 	// http://localhost:8000/blog/dummy/user?page=0
