@@ -17,14 +17,15 @@ let index={
 		
 		$.ajax({
 			type: "POST",
-			url: "/api/user",
+			url: "/blog/api/user",
 			data: JSON.stringify(data), // http body data
-			conentType: "application/json; charset=utf-8", // body data 가 어떤 type 인지(MIME)
+			contentType: "application/json; charset=utf-8", // body data 가 어떤 type 인지(MIME)
 			dataType: "json" //요청에 대한 응답이 왔을때의 모든게 문자열 이다. 
 			                 //만약 type 이 json 이면 아래 function 에 결과 값을 
 			                 //javascript object 로 받을수 있다.
 		}).done(function(resp){
 			alert("회원가입이 완료 되었습니다.");
+			console.log(resp);
 			location.href="/blog";
 		}).fail(function(error){
 			alert(JSON.stringify(error));	
