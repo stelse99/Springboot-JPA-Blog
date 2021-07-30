@@ -21,9 +21,11 @@
 	      <input class="form-check-input" type="checkbox"> Remember me
 	    </label>
 	  </div>
-	  <button type="submit" class="btn btn-primary">로그인</button>
 	</form>
+  
+    <button type="btn-login" class="btn btn-primary">로그인</button>
 		
 </div>
 
+<script src="/blog/js/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>

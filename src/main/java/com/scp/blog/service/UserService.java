@@ -15,15 +15,12 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	@Transactional
-	public int 회원가입(User user) {
-		
-		try {
-			userRepository.save(user);
-			return 1;
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("UserService::회원가입():"+e.getMessage());
-		}
-		return -1;
+	public void 회원가입(User user) {
+		userRepository.save(user);
+	}
+	
+	@Transactional
+	public void 로그인(User user) {
+		userRepository.findBy
 	}
 }
