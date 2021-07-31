@@ -19,8 +19,8 @@ public class UserService {
 		userRepository.save(user);
 	}
 	
-	@Transactional
-	public void 로그인(User user) {
-		userRepository.findBy
+	@Transactional()
+	public User 로그인(User user) {
+		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 	}
 }

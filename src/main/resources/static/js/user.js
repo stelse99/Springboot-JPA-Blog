@@ -3,6 +3,10 @@ let index={
 		$("#btn-save").on("click",()=>{
 			this.save();
 		});
+		
+		$("#btn-login").on("click",()=>{
+			this.login();
+		});
 	},
 	save:function(){
 		//alert('user 의 save 함수 호출됨.');	
