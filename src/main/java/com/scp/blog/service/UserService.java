@@ -19,8 +19,9 @@ public class UserService {
 		userRepository.save(user);
 	}
 	
-	@Transactional()
-	public User 로그인(User user) {
-		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
-	}
+	//전통적인 로그인 방식
+//	@Transactional()
+//	public User 로그인(User user) {
+//		return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+//	}
 }
