@@ -54,6 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.loginProcessingUrl("/auth/loginProc") // 스프링 시큐리티가 해당 주소로 요청시 가로 체서 대신로인 해준다.
 				.defaultSuccessUrl("/") // 정상 요청이 완료된경우
 				//.failureUrl("/fail") // 실패인경우
+				
 				;
 	}
 	
