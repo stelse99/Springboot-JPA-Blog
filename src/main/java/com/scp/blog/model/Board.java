@@ -40,7 +40,7 @@ public class Board {
 	@Lob // 대용량데이타
 	private String content; // 썸머노트 라이브러리 <html> 테그가 섞여서 디자인됨.
 	
-	@ColumnDefault("0")
+	//@ColumnDefault("0")
 	private int count;
 	
 	@ManyToOne(fetch = FetchType.EAGER)  // Many=Board, One=User

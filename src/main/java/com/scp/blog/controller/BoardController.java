@@ -15,5 +15,10 @@ public class BoardController {
 		System.out.println("로그인 사용자 id:"+principal);
 		return "index";
 	}
+	
+	@GetMapping("/board/saveForm")
+	public String saveForm() {
+		return "board/saveForm"; 
+	}
 
 }
