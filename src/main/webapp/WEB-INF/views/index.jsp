@@ -4,7 +4,6 @@
 <%@ include file="layout/header.jsp"%>
   
 <div class="container">
-	
 	<c:forEach var="board" items="${boards.content}">
 		<div class="card m-4">
 		  <!--img class="card-img-top" src="img_avatar1.png" alt="Card image"-->
@@ -36,7 +35,6 @@
 	  	</c:otherwise>
 	  </c:choose>
 	</ul>
-		
 </div>
 
 <%@ include file="layout/footer.jsp"%>
