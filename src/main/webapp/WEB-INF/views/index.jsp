@@ -2,8 +2,7 @@
     pageEncoding="utf-8"%>
 
 <%@ include file="layout/header.jsp"%>
-  
-<div class="container">
+  <div class="container">
 	<c:forEach var="board" items="${boards.content}">
 		<div class="card m-4">
 		  <!--img class="card-img-top" src="img_avatar1.png" alt="Card image"-->
