@@ -16,7 +16,9 @@
 	</form>
   
     <button id="btn-save" class="btn btn-primary">글쓰기</button>
-		
+
+
+
 </div>
 
 <script>
