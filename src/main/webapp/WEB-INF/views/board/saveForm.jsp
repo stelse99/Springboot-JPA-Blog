@@ -2,7 +2,6 @@
     pageEncoding="utf-8"%>
 
 <!-- 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 -->
-
 <%@ include file="../layout/header.jsp"%> 
 <div class="container">
 	<form action="/auth/loginProc" method="post">
