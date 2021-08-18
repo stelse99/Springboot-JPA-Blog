@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 
-<!-- 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 -->
+<!-- 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 -->
 <%@ include file="../layout/header.jsp"%> 
 <div class="container">
 	<form action="/auth/loginProc" method="post">
