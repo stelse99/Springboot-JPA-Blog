@@ -2,6 +2,8 @@
     pageEncoding="utf-8"%>
 
 <%@ include file="layout/header.jsp"%>
+
+
   <div class="container">
 	<c:forEach var="board" items="${boards.content}">
 		<div class="card m-4">
@@ -35,6 +37,7 @@
 	  </c:choose>
 	</ul>
 </div>
+
 
 <%@ include file="layout/footer.jsp"%>
 

@@ -1,6 +1,6 @@
 package com.scp.blog.test;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class EncTest {

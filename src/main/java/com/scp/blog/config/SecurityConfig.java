@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Bean
 	public BCryptPasswordEncoder encodePWD() {
+
 		return new BCryptPasswordEncoder();
 	}
 	

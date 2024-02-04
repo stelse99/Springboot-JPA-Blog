@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 //@DynamicInsert // 인서트시에 null 인경우 제외처리
-@Entity // User 틀래스가 MySql 에 테이블이 생성이 된다.
+@Entity // User 클래스가 MySql 에 테이블이 생성이 된다.
 public class User {
 	
 	@Id // Primary Key

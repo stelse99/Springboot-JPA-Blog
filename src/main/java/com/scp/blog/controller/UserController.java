@@ -24,11 +24,13 @@ public class UserController {
 	// Security 방식
 	@GetMapping("/auth/joinForm")
 	public String joinForm() {
+
 		return "user/joinForm";
 	}
 	
 	@GetMapping("/auth/loginForm")
 	public String loginForm() {
+
 		return "user/loginForm";
 	}
 }
